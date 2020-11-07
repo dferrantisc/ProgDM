@@ -9,9 +9,14 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.appbook.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity {
+
+
+    private FirebaseAuth mAuth;
 
     private FirebaseFirestore firebaseFirestore;
     private RecyclerView dbFirestoreList;
@@ -20,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mAuth = FirebaseAuth.getInstance();
 
 
         Button btnEntrar = findViewById(R.id.btnEntrar);
@@ -41,4 +48,16 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        updateUI(currentUser);
+    }
+
+    private void updateUI(FirebaseUser currentUser) {
+    }
+
 }
