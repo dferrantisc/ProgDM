@@ -1,4 +1,8 @@
 package com.example.appbook.Controle;
 
-public class CadLivro {
+import com.example.appbook.Entidades.LivroEn;
+
+public class LivroC {
+
+    LivroEn livro = new LivroEn();
 }

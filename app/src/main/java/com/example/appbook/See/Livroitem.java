@@ -1,8 +1,10 @@
-package com.example.appbook;
+package com.example.appbook.See;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.appbook.R;
 
 public class Livroitem extends AppCompatActivity {
 
