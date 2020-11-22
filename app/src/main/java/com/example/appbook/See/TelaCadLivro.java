@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
-import com.example.appbook.EntidadeL;
+import com.example.appbook.Entidades.LivroEn;
 import com.example.appbook.R;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.FirebaseDatabase;
@@ -71,7 +71,7 @@ public class TelaCadLivro extends AppCompatActivity {
 
     public void SalvarL(View view) {
 
-        EntidadeL dl = new EntidadeL();
+        LivroEn dl = new LivroEn();
 
 
             dl.setNomeL(txtNomeL.getText().toString());

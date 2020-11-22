@@ -1,15 +1,22 @@
-package com.example.appbook;
+package com.example.appbook.Entidades;
 
 import android.widget.CheckBox;
 import android.widget.EditText;
 
-public class EntidadeL {
+public class LivroEn {
 
+
+    private Integer idL;
     private String NomeL;
     private String AutorL;
     private String QuantidadePgsL;
     private boolean Lido;
     private boolean Lendo;
+
+
+    public Integer getIdL() {return idL; }
+
+    public void setIdL(Integer idL) { this.idL = idL; }
 
     public String getNomeL() {
         return NomeL;
