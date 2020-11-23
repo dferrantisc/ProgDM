@@ -45,7 +45,7 @@ public class TelaCadUser extends AppCompatActivity {
                 String login = txtCadULogin.getText().toString().trim();
                 String senha = txtCadUPass.getText().toString().trim();
 
-                newUser(nome, login, senha);
+                newUser( login, senha);
 
 
             }
@@ -60,9 +60,9 @@ public class TelaCadUser extends AppCompatActivity {
         });
     }
 
-    private void newUser(String nome, String login, String senha)
+    private void newUser( String login, String senha)
     {
-           Auth.createUserWithEmailAndPassword(nome,login,senha)
+           Auth.createUserWithEmailAndPassword(login,senha)
                 .addOnCompleteListener(TelaCadUser.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {

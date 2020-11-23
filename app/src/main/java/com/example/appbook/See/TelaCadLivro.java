@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.style.LeadingMarginSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -12,21 +13,18 @@ import android.widget.EditText;
 import com.example.appbook.Entidades.LivroEn;
 import com.example.appbook.R;
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.DatabaseReference;
 
 
 public class TelaCadLivro extends AppCompatActivity {
 
-    EditText txtNomeL;
-    EditText EtxtAutorL;
-    EditText EtxtQuantPL;
-    CheckBox cbLido ;
-    CheckBox cbLendo;
+    private EditText txtNomeL,EtxtAutorL, EtxtQuantPL;
+    private CheckBox cbLido,cbLendo;
+    private Button btnSalvarLivro;
 
-    FirebaseDatabase database;
-    DatabaseReference reference;
-
+    private FirebaseAuth auth;
 
 
     @Override
@@ -34,10 +32,9 @@ public class TelaCadLivro extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_cad_livro);
 
+        initComponentesLivros();
+        eventClickCadL();
 
-        FirebaseApp.initializeApp(TelaCadLivro.this);
-        database = FirebaseDatabase.getInstance();
-        reference = database.getReference();
 
 
         Button btnSalvarLivro = findViewById(R.id.btnSalvarLivro);
@@ -51,45 +48,56 @@ public class TelaCadLivro extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void eventClickCadL() {
+        btnSalvarLivro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String NomeL = txtNomeL.getText().toString().trim();
+                String AutorL = EtxtAutorL.getText().toString().trim();
+                String QPgL = EtxtQuantPL.getText().toString().trim();
+
+                String Lido = cbLido.getText().toString().trim();
+                String Lendo =cbLendo.getText().toString().trim();
 
 
-            txtNomeL = (EditText) findViewById(R.id.txtNomeL);
-            EtxtAutorL = (EditText) findViewById(R.id.EtxtAutorL);
-            EtxtQuantPL = (EditText) findViewById(R.id.EtxtQuantPL);
-            cbLido = (CheckBox) findViewById(R.id.cbLido);
-            cbLendo = (CheckBox) findViewById(R.id.cbLendo);
+
+                if (cbLido.isChecked()){
+                    cbLido.setChecked(false);
+                    return;
+                }else if (cbLendo.isChecked())
+                {
+                    cbLendo.setChecked(true);
+                    return;
+                }
 
 
+                newBooks(NomeL, AutorL, QPgL, Lido, Lendo);
 
+                startActivity(new Intent(TelaCadLivro.this, TelaInicio.class));
+            }
+        });
+    }
 
-
-
+    private void newBooks(String nomeL, String autorL, String qPgL, String lido, String lendo) {
 
     }
 
 
+    private void initComponentesLivros() {
 
-    public void SalvarL(View view) {
+        txtNomeL = (EditText) findViewById(R.id.txtNomeL);
+        EtxtAutorL = (EditText) findViewById(R.id.EtxtAutorL);
+        EtxtQuantPL = (EditText) findViewById(R.id.EtxtQuantPL);
 
-        LivroEn dl = new LivroEn();
+        cbLido = (CheckBox) findViewById(R.id.cbLido);
+        cbLendo = (CheckBox) findViewById(R.id.cbLendo);
 
-
-            dl.setNomeL(txtNomeL.getText().toString());
-            dl.setAutorL(EtxtAutorL.getText().toString());
-            dl.setQuantidadePgsL(EtxtQuantPL.getText().toString());
-
-            dl.setLido(cbLido.isChecked());
-            dl.setLendo(cbLendo.isChecked());
-
-
-            String valor= EtxtQuantPL.getText().toString();
-            int finalValue= Integer.parseInt(valor);
-
-           reference.child("Livro").setValue(dl);
-
-           finish();
-
+        btnSalvarLivro = (Button) findViewById(R.id.btnSalvarLivro);
 
     }
+
 
 }

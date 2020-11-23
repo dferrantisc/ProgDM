@@ -12,6 +12,7 @@ public class Conexao {
     private static FirebaseUser fbUser;
 
     private Conexao() {
+
     }
 
     public static FirebaseAuth getFbAuth()

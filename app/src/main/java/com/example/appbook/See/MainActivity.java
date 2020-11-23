@@ -69,12 +69,7 @@ public class MainActivity extends AppCompatActivity
                }
            });
 
-           txtResetPass.setOnClickListener(new View.OnClickListener() {
-               @Override
-               public void onClick(View v) {
 
-               }
-           });
     }
 
     private void Entrar(String login, String senha) {
@@ -96,10 +91,6 @@ public class MainActivity extends AppCompatActivity
     private void Alert(String msg) {
         Toast.makeText(MainActivity.this,msg,Toast.LENGTH_SHORT).show();
         }
-
-
-
-
 
     private void initComponentes(){
 
