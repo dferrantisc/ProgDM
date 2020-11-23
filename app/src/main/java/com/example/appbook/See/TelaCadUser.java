@@ -17,6 +17,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import javax.security.auth.login.LoginException;
+
 public class TelaCadUser extends AppCompatActivity {
 
     private EditText txtCadUNome,txtCadULogin,txtCadUPass;
@@ -60,7 +62,7 @@ public class TelaCadUser extends AppCompatActivity {
 
     private void newUser(String nome, String login, String senha)
     {
-           Auth.createUserWithEmailAndPassword(nome, login, senha)
+           Auth.createUserWithEmailAndPassword(nome,login,senha)
                 .addOnCompleteListener(TelaCadUser.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {

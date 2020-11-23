@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.appbook.Conexao;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity
 {
 
     private EditText txtUser,txtPass;
+    private TextView txtResetPass;
     private Button btnEntrar, btnCadUser;
 
     private FirebaseAuth auth;
@@ -66,6 +68,13 @@ public class MainActivity extends AppCompatActivity
 
                }
            });
+
+           txtResetPass.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View v) {
+
+               }
+           });
     }
 
     private void Entrar(String login, String senha) {
@@ -96,6 +105,7 @@ public class MainActivity extends AppCompatActivity
 
         txtUser = (EditText) findViewById(R.id.txtUser);
         txtPass = (EditText) findViewById(R.id.txtPass);
+        txtResetPass = (TextView) findViewById(R.id.txtResetPass);
 
         btnEntrar = (Button) findViewById(R.id.btnEntrar);
         btnCadUser = (Button) findViewById(R.id.btnCadUser);
